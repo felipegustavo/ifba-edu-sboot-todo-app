@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div class="container">
+    <h1>Minhas Atividades</h1>
+
+    <form th:action="@{/atividade}" method="post">
+      <div class="form-group">
+        <label for="title">Título</label>
+        <input type="text" name="title" id="title" required placeholder="Nova atividade">
+      </div>
+
+      <div class="form-group">
+        <label for="status">Status</label>  
+        <select name="status" id="status">
+          <option th:each="elem : ${arrayStatus}" th:value="${elem.name()}"> <span th:text="${elem.viewName}"></span>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Descrição</label>
+        <textarea name="description" id="description"></textarea>
+      </div>
+
+      <div style="display: flex; justify-content: end;">
+        <button type="submit">Criar</button>
+      </div>
+      
+    </form>
+
+    <ul>
+      <li th:each="atividade : ${atividades}"
+        th:classappend="${atividade.status.name()} == 'DONE' ? 'completed' : ''">
+        <span th:text="${atividade.title}"></span> | <span th:text="${atividade.status}"></span>
+        <p th:text="${atividade.description}"></p>
+      </li>
+    </ul>
+  </div>
+
+</body>
+</html>

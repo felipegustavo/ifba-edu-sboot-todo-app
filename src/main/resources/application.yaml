@@ -2,8 +2,17 @@ spring:
   application:
     name: todo-app
   datasource:
-    url:
-    username: 
-    password:
+    url: jdbc:h2:file:./data/todoapp
+    driver-class-name: org.h2.Driver
+    username: user
+    password: passwd
+  jpa:
+    hibernate:
+      ddl-auto: update
+  h2:
+    console:
+      enabled: true
+  thymeleaf:
+    cache: false
 server:
   port: 8081

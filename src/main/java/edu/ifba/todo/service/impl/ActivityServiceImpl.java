@@ -4,25 +4,24 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import edu.ifba.todo.dto.NoteDTO;
-import edu.ifba.todo.mapping.NoteMapper;
-import edu.ifba.todo.repository.NoteRepository;
-import edu.ifba.todo.service.NoteService;
+import edu.ifba.todo.dto.ActivityDTO;
+import edu.ifba.todo.mapping.ActivityMapper;
+import edu.ifba.todo.repository.ActivityRepository;
+import edu.ifba.todo.service.ActivityService;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class NoteServiceImpl implements NoteService {
+public class ActivityServiceImpl implements ActivityService {
 
-  private final NoteRepository repository;
-  private final NoteMapper mapper;
+  private final ActivityRepository repository;
+  private final ActivityMapper mapper;
 
   @Override
-  public List<NoteDTO> findAll() {
+  public List<ActivityDTO> findAll() {
     return repository.findAll()
               .stream()
-              .filter(e -> e.getTitle().startsWith("A"))
-              .map(mapper::tNoteDTO)
+              .map(mapper::toActivityDTO)
               .toList();
 
     /*List<NoteDTO> result = new ArrayList<>();
@@ -35,9 +34,9 @@ public class NoteServiceImpl implements NoteService {
   }
 
   @Override
-  public NoteDTO findOne(Long id) {
+  public ActivityDTO findOne(Long id) {
     var entity = repository.findById(id).orElseThrow();
-    return mapper.tNoteDTO(entity);
+    return mapper.toActivityDTO(entity);
   }
 
   @Override
@@ -48,9 +47,9 @@ public class NoteServiceImpl implements NoteService {
   }
 
   @Override
-  public NoteDTO save(NoteDTO noteDTO) {
-    var entity = repository.save(mapper.tNoteEntity(noteDTO));
-    return mapper.tNoteDTO(entity);
+  public ActivityDTO save(ActivityDTO noteDTO) {
+    var entity = repository.save(mapper.toActivityEntity(noteDTO));
+    return mapper.toActivityDTO(entity);
   }
 
   
