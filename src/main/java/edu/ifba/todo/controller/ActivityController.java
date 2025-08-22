@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import edu.ifba.todo.domain.enums.ActivityStatus;
 import edu.ifba.todo.dto.ActivityDTO;
 import edu.ifba.todo.service.ActivityService;
+import edu.ifba.todo.service.ActivityStatusService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,6 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ActivityController {
 
   private final ActivityService service;
+  private final ActivityStatusService statusService;
 
   @PostMapping
   public String create(ActivityDTO dto) {
@@ -34,7 +35,7 @@ public class ActivityController {
   @GetMapping
   public String listAll(Model model) {
     model.addAttribute("atividades", service.findAll());
-    model.addAttribute("arrayStatus", Arrays.asList(ActivityStatus.values()));
+    model.addAttribute("listStatus", statusService.findAll());
     return "atividades/list-all";
   }
 

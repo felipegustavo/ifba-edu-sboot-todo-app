@@ -20,7 +20,7 @@
       <div class="form-group">
         <label for="status">Status</label>  
         <select name="status" id="status">
-          <option th:each="elem : ${arrayStatus}" th:value="${elem.name()}"> <span th:text="${elem.viewName}"></span>
+          <option th:each="elem : ${listStatus}" th:value="${elem.id}"> <span th:text="${elem.name}"></span>
         </select>
       </div>
 

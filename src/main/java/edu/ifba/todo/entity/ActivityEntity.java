@@ -1,13 +1,12 @@
 package edu.ifba.todo.entity;
 
-import edu.ifba.todo.domain.enums.ActivityStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,8 +29,8 @@ public class ActivityEntity {
   @Column(name = "DESCRICAO", nullable = false)
   private String description;
 
-  @Column(name = "STATUS", nullable = false)
-  @Enumerated(EnumType.ORDINAL)
-  private ActivityStatus status;
-  
+  @ManyToOne
+  @JoinColumn(name = "STATUS_ID")
+  private ActivityStatusEntity status;
+
 }

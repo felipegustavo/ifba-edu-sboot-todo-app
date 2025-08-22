@@ -1,19 +1,15 @@
 package edu.ifba.todo.mapping;
 
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
 
 import edu.ifba.todo.dto.ActivityDTO;
 import edu.ifba.todo.entity.ActivityEntity;
 
-@Component
-public class ActivityMapper {
+@Mapper(componentModel = "spring")
+public interface ActivityMapper {
 
-  public ActivityEntity toActivityEntity(ActivityDTO dto) {
-    return new ActivityEntity(dto.id(), dto.title(), dto.description(), dto.status());
-  }
+  public ActivityEntity toActivityEntity(ActivityDTO dto);
 
-  public ActivityDTO toActivityDTO(ActivityEntity entity) {
-    return new ActivityDTO(entity.getId(), entity.getTitle(), entity.getDescription(), entity.getStatus());
-  }
+  public ActivityDTO toActivityDTO(ActivityEntity entity);
 
 }
