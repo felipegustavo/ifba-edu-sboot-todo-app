@@ -11,22 +11,31 @@
   <div class="container">
     <h1>Minhas Atividades</h1>
 
-    <form th:action="@{/atividade}" method="post">
+    <form th:action="@{/atividade}" th:object="${activity}" method="post">
       <div class="form-group">
         <label for="title">Título</label>
-        <input type="text" name="title" id="title" required placeholder="Nova atividade">
+        <input type="text" th:field="*{title}" id="title" placeholder="Nova atividade">
+        <ul>
+          <li th:each="err : ${#fields.errors('title')}" th:text="${err}" class="error"></li>
+        </ul>
       </div>
 
       <div class="form-group">
         <label for="status">Status</label>  
-        <select name="status" id="status">
+        <select th:field="*{status.id}" id="status">
           <option th:each="elem : ${listStatus}" th:value="${elem.id}"> <span th:text="${elem.name}"></span>
         </select>
+        <ul>
+          <li th:each="err : ${#fields.errors('status')}" th:text="${err}" class="error"></li>
+        </ul>
       </div>
 
       <div class="form-group">
         <label for="description">Descrição</label>
-        <textarea name="description" id="description"></textarea>
+        <textarea th:field="*{description}" id="description"></textarea>
+        <ul>
+          <li th:each="err : ${#fields.errors('description')}" th:text="${err}" class="error"></li>
+        </ul>
       </div>
 
       <div style="display: flex; justify-content: end;">
@@ -36,9 +45,8 @@
     </form>
 
     <ul>
-      <li th:each="atividade : ${atividades}"
-        th:classappend="${atividade.status.name()} == 'DONE' ? 'completed' : ''">
-        <span th:text="${atividade.title}"></span> | <span th:text="${atividade.status}"></span>
+      <li th:each="atividade : ${atividades}">
+        <span th:text="${atividade.title}"></span> | <span th:text="${atividade.status.name}"></span>
         <p th:text="${atividade.description}"></p>
       </li>
     </ul>

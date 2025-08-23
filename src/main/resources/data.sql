@@ -1,0 +1,1 @@
+INSERT INTO TB_STATUS_ATIVIDADE(ID, NOME) VALUES ('1', 'Para Fazer'), ('2', 'Fazendo'), ('3', 'Feito');

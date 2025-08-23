@@ -27,9 +27,6 @@ input, textarea {
 
 .form-group {
   margin-bottom: 1rem;
-  display: flex;
-  justify-content: flex-start;
-  gap: 1rem;
 }
 
 button {
@@ -54,4 +51,8 @@ li.completed span {
 
 .completed {
   background-color: rgb(141, 238, 141);
+}
+
+.error {
+    color: red;
 }

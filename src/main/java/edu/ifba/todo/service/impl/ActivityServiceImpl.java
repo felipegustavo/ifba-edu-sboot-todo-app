@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import edu.ifba.todo.dto.ActivityDTO;
 import edu.ifba.todo.mapping.ActivityMapper;
 import edu.ifba.todo.repository.ActivityRepository;
+import edu.ifba.todo.repository.ActivityStatusRepository;
 import edu.ifba.todo.service.ActivityService;
 import lombok.RequiredArgsConstructor;
 
@@ -15,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 public class ActivityServiceImpl implements ActivityService {
 
   private final ActivityRepository repository;
+  private final ActivityStatusRepository statusRepository;
   private final ActivityMapper mapper;
 
   @Override
@@ -23,14 +25,6 @@ public class ActivityServiceImpl implements ActivityService {
               .stream()
               .map(mapper::toActivityDTO)
               .toList();
-
-    /*List<NoteDTO> result = new ArrayList<>();
-    for (var elem : repository.findAll()) {
-      if (elem.getTitle().startsWith("A")) {
-        result.add(mapper.tNoteDTO(elem));
-      }
-    }
-    return result;*/
   }
 
   @Override
@@ -48,7 +42,8 @@ public class ActivityServiceImpl implements ActivityService {
 
   @Override
   public ActivityDTO save(ActivityDTO noteDTO) {
-    var entity = repository.save(mapper.toActivityEntity(noteDTO));
+    var status = statusRepository.findById(noteDTO.getStatus().getId()).orElseThrow();
+    var entity = repository.save(mapper.toActivityEntity(noteDTO, status));
     return mapper.toActivityDTO(entity);
   }
 
