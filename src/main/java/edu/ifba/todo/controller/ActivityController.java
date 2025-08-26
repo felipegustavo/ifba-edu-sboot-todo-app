@@ -42,9 +42,10 @@ public class ActivityController {
 
   @GetMapping
   public String listAll(Model model) {
-    loadFormData(model);
+    throw new IllegalArgumentException();
+    /*loadFormData(model);
     model.addAttribute("activity", new ActivityDTO());
-    return "atividades/list-all";
+    return "atividades/list-all";*/
   }
 
   private void loadFormData(Model model) {

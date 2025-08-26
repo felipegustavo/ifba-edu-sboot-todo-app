@@ -21,7 +21,7 @@ public class ActivityServiceImpl implements ActivityService {
 
   @Override
   public List<ActivityDTO> findAll() {
-    return repository.findAll()
+    return repository.findByStatus(List.of(1L, 2L))
               .stream()
               .map(mapper::toActivityDTO)
               .toList();
