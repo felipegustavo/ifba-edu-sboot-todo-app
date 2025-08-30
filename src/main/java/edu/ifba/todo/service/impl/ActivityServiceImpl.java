@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import edu.ifba.todo.dto.ActivityDTO;
+import edu.ifba.todo.exceptions.NotFoundException;
 import edu.ifba.todo.mapping.ActivityMapper;
 import edu.ifba.todo.repository.ActivityRepository;
 import edu.ifba.todo.repository.ActivityStatusRepository;
@@ -29,7 +30,7 @@ public class ActivityServiceImpl implements ActivityService {
 
   @Override
   public ActivityDTO findOne(Long id) {
-    var entity = repository.findById(id).orElseThrow();
+    var entity = repository.findById(id).orElseThrow(NotFoundException::new);
     return mapper.toActivityDTO(entity);
   }
 

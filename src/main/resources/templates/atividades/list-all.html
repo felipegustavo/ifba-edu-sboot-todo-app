@@ -9,9 +9,16 @@
 <body>
   
   <div class="container">
+
+    <div class="error-not-found" th:if="${erroNotFound != null && erroNotFound}">
+      Atividade não foi encontrada!!!
+    </div>
+
     <h1>Minhas Atividades</h1>
 
     <form th:action="@{/atividade}" th:object="${activity}" method="post">
+      <input type="hidden" th:field="*{id}">
+
       <div class="form-group">
         <label for="title">Título</label>
         <input type="text" th:field="*{title}" id="title" placeholder="Nova atividade">
@@ -48,6 +55,10 @@
       <li th:each="atividade : ${atividades}">
         <span th:text="${atividade.title}"></span> | <span th:text="${atividade.status.name}"></span>
         <p th:text="${atividade.description}"></p>
+        <div>
+          <a th:href="@{'/atividade/excluir/'+ ${atividade.id}}" class="link-delete">Exluir</a>
+          <a th:href="@{'/atividade/editar/'+ ${atividade.id}}" class="link-edit">Editar</a>
+        </div>
       </li>
     </ul>
   </div>
