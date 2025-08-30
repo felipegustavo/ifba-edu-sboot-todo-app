@@ -4,22 +4,22 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import edu.ifba.todo.dto.ActivityStatusDTO;
-import edu.ifba.todo.entity.ActivityStatusEntity;
-import edu.ifba.todo.mapping.ActivityStatusMapper;
+import edu.ifba.todo.domain.dto.AtividadeStatusDTO;
+import edu.ifba.todo.domain.entity.AtividadeStatusEntity;
+import edu.ifba.todo.mapping.AtividadeStatusMapper;
 import edu.ifba.todo.repository.ActivityStatusRepository;
-import edu.ifba.todo.service.ActivityStatusService;
+import edu.ifba.todo.service.AtividadeStatusService;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class ActivityStatusServiceImpl implements ActivityStatusService {
+public class AtividadeStatusServiceImpl implements AtividadeStatusService {
 
   private final ActivityStatusRepository repository;
-  private final ActivityStatusMapper mapper;
+  private final AtividadeStatusMapper mapper;
 
   @Override
-  public List<ActivityStatusDTO> findAll() {
+  public List<AtividadeStatusDTO> findAll() {
     return repository
             .findAll()
             .stream()

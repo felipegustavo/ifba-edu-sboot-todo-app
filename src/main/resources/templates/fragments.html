@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+    <title th:replace="this :: title">Title Padrão</title>
+</head>
+<body>
+    <!-- HEADER FRAGMENT -->
+    <div th:fragment="header">
+        <header class="header">
+            <h1>Minhas Atividades</h1>
+            <nav>
+                <a th:href="@{/}" class="text-white">Home</a> |
+                <a th:href="@{/atividade}" class="text-white">Atividades</a>
+            </nav>
+        </header>
+    </div>
+
+    <!-- FOOTER FRAGMENT -->
+    <div th:fragment="footer">
+        <footer class="footer">
+            <p>&copy; Todos os direitos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>

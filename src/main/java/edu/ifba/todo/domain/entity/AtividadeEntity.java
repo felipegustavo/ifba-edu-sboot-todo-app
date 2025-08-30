@@ -1,4 +1,4 @@
-package edu.ifba.todo.entity;
+package edu.ifba.todo.domain.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,20 +17,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "TB_ATIVIDADE")
-public class ActivityEntity {
+public class AtividadeEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
   @Column(name = "TITULO", nullable = false)
-  private String title;
+  private String titulo;
 
   @Column(name = "DESCRICAO", nullable = false)
-  private String description;
+  private String descricao;
 
   @ManyToOne
   @JoinColumn(name = "STATUS_ID")
-  private ActivityStatusEntity status;
+  private AtividadeStatusEntity status;
 
 }

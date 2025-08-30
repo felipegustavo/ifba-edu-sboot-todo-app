@@ -1,4 +1,4 @@
-package edu.ifba.todo.dto;
+package edu.ifba.todo.domain.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -10,18 +10,18 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ActivityDTO {
+public class AtividadeDTO {
   
   private Long id;
 
   @NotBlank
   @Size(min = 10, max = 100)
-  private String title;
+  private String titulo;
 
   @NotBlank
-  private String description;
+  private String descricao;
 
   @NotNull
-  private ActivityStatusDTO status = new ActivityStatusDTO();
+  private AtividadeStatusDTO status = new AtividadeStatusDTO();
 
 }

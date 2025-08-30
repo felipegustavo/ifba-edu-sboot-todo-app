@@ -1,4 +1,4 @@
-package edu.ifba.todo.entity;
+package edu.ifba.todo.domain.entity;
 
 import java.util.List;
 
@@ -18,16 +18,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "TB_STATUS_ATIVIDADE")
-public class ActivityStatusEntity {
+public class AtividadeStatusEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
   @Column(name = "NOME", nullable = false)
-  private String name;
+  private String nome;
 
   @OneToMany(mappedBy = "status")
-  private List<ActivityEntity> activities;
+  private List<AtividadeEntity> atividades;
 
 }

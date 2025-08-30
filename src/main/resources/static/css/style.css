@@ -1,3 +1,9 @@
+* {
+    box-sizing: content-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: Arial, sans-serif;
     background: #f4f4f4;
@@ -72,4 +78,27 @@ li.completed span {
     background-color: rgba(241, 87, 87, 0.678);
     border: 1px dashed red;
     font-weight: bold;
+}
+
+.header, .footer {
+    background-color: #a5a5a5;
+    padding: 0.5rem;
+}
+
+.header {
+    border-bottom: 2px solid black;
+}
+
+.footer {
+    border-top: 2px solid black;
+}
+
+.root-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main {
+    flex-grow: 1;
 }
